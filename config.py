@@ -37,11 +37,11 @@ def setConfig():
                 if key == "pocet_barev":
                     pocet_barev = int(value)
                 elif key == "opakovani_barev":
-                    opakovani_barev = value
+                    opakovani_barev = True if value == "True" else False
                 elif key == "pocet_policek":
                     pocet_policek = int(value)
                 elif key == "presne_hodnoceni":
-                    presne_hodnoceni = value
+                    presne_hodnoceni = True if value == "True" else False
                 elif key == "pocet_pokusu":
                     pocet_pokusu = int(value)
                 else:

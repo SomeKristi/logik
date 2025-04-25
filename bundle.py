@@ -49,26 +49,20 @@ def compareBundles(guess, hidden):
     used_index = 0
     index = 0
     for i in guess:
-        # pokud je zaplé přsené hodnocení bude aktualizovat index na stejné místo jako kontrolujeme
-        # pokud ne tak se bude used_index teprve posouvat když na políčko už zapsal 
-        if presne_hodnoceni:
-            used_index = index
-
         # zkontroluje jestli je to přesná shoda
         if i == hidden[index]:
-            answer_bundle[used_index] = 2
-            used_index+=1
+            answer_bundle[index] = 2
+           
 
         # kdyz ne, tak se koukne jestli to je nepřesná shoda 
         else:
             isValid = False
             for j in hidden:
                 if i == j:
-                    answer_bundle[used_index] = 1
-                    used_index+=1
+                    answer_bundle[index] = 1
                     break
         index += 1
 
-        if not presne_hodnoceni:
-            answer_bundle = sorted(answer_bundle, reverse=True)
+    if not presne_hodnoceni:
+        answer_bundle = sorted(answer_bundle, reverse=True)
     return isValid, answer_bundle
