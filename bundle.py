@@ -1,12 +1,16 @@
-from config import *
+
 
 
 # vybere náhodnou barvičku (barvy jsou vyjádřeny pomocí čísel)
 def randColor() -> int:
+    from config import pocet_barev
+    from config import random
     return random.randint(0, pocet_barev)
 
 # vytvoří nový řádek náhodných barev
 def randBundle():
+    from config import pocet_policek
+    from config import opakovani_barev
     bundle = list()
     for i in range(pocet_policek):
         color = randColor()
@@ -26,6 +30,7 @@ class inputLenghtException(Exception):
 
 # vytvoří nový řádek podle vstupu uživatele (příklad formátu "2 3 4 5 6")
 def newBundle(user_input:str):
+    from config import pocet_policek
     bundle = [int(i) for i in user_input.split(" ")]
     if len(bundle) != pocet_policek:
         raise inputLenghtException("Wrong number or arguments")
@@ -35,6 +40,8 @@ def newBundle(user_input:str):
 # porovná/vyhodnotí dva řádky a vrátí řádek, který ukazuje co bylo správně (bíle a černe barvičky)
 # 0 = žádná shoda, 1 = někde shoda (bílá), 2 = přesná shoda (černá)
 def compareBundles(guess, hidden):
+    from config import pocet_policek
+    from config import presne_hodnoceni
     answer_bundle = [0]*pocet_policek
     
 

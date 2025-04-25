@@ -1,5 +1,4 @@
 import color as c
-from config import *
 
 # převede číslo na barvičku
 def choseColor(i, colorfull):
@@ -30,9 +29,11 @@ def choseColor(i, colorfull):
                 return c.Black
             
             case _:
-                return c.RESET 
+                return c.RESET
     else:
         match i:
+            case 0:
+                return c.B_Black
             case 1:
                 return c.White
             
@@ -46,6 +47,7 @@ def choseColor(i, colorfull):
         
 # převést řádek na textovou formu
 def toString(bundle, colorfull) -> str:
+    from config import pocet_policek
     out = ""
     if bundle == None:
         out = "_ "*pocet_policek
@@ -56,12 +58,14 @@ def toString(bundle, colorfull) -> str:
 
 # vypsat hlavní TUI
 def printGame(hidden, guesses, answers, valid):
+    from config import pocet_policek
+    from config import pocet_pokusu
 
     spliter = "  |  "
 
     print(c.CLEAR)
     if valid:
-        print(toString(hidden, True))
+        print(toString(hidden, True)+c.RESET)
     else:
         print(c.B_Yellow+"X "*pocet_policek+c.RESET)
 

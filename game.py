@@ -1,10 +1,11 @@
 import bundle
-from config import *
 import graphics
 from time import sleep
+import color as c
 
 
 def start():
+    import config
     hidden = bundle.randBundle()
 
     guesses = list()
@@ -12,8 +13,9 @@ def start():
 
     guess = ""
     show = False
+    valid = False
     try:
-        for i in range(pocet_pokusu):
+        for i in range(config.pocet_pokusu):
             guessing = True
             while guessing:
                 graphics.printGame(hidden, guesses, answers, show)
@@ -22,7 +24,7 @@ def start():
                     option = input()
 
                     # Pokud bude nutno podvádět, tak se tímto zobrazí kombinace
-                    if option == "X X X X X":
+                    if option == "X":
                         show = True
 
                     # Když zadá uživatel špatné hodnoty, tak to hodí chybu a ta je odchycena
@@ -46,10 +48,10 @@ def start():
                 graphics.printGame(hidden, guesses, answers, True)
                 print(c.Green+"Vyhrál jsi"+c.RESET)
                 break
-    except InterruptedError:
-        print("Ukoncil jsi hru")
+    except KeyboardInterrupt:
+        print(c.Red+"Ukoncil jsi hru"+c.RESET)
+        sleep(2)
 
     if not valid:
+        graphics.printGame(hidden, guesses, answers, True)
         print(c.Red+"Prohrál jsi"+c.RESET)
-        print("schovaný řádek byl: ", end="")
-        print(hidden)

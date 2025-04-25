@@ -3,7 +3,7 @@ import color as c
 
 pocet_barev = 5 # 5-7
 opakovani_barev = True # boolean
-pocet_policek = 5 # 4-5
+pocet_policek:int = 5 # 4-5
 presne_hodnoceni = True # boolean
 pocet_pokusu = 10
 
@@ -30,24 +30,27 @@ def setConfig():
             if option == "":
                 return
             
-            key, value = option.split(" = ")
+            try:
+                key, value = option.split(" = ")
 
-            # nastavit hodnotu
-            if key == "pocet_barev":
-                pocet_barev = value
-            elif key == "opakovani_barev":
-                opakovani_barev = value
-            elif key == "pocet_policek":
-                pocet_policek = value
-            elif key == "presne_hodnoceni":
-                presne_hodnoceni = value
-            elif key == "pocet_pokusu":
-                pocet_pokusu = value
-            else:
+                # nastavit hodnotu
+                if key == "pocet_barev":
+                    pocet_barev = int(value)
+                elif key == "opakovani_barev":
+                    opakovani_barev = value
+                elif key == "pocet_policek":
+                    pocet_policek = int(value)
+                elif key == "presne_hodnoceni":
+                    presne_hodnoceni = value
+                elif key == "pocet_pokusu":
+                    pocet_pokusu = int(value)
+                else:
+                    print(c.Red+"Něco jsi zadal špatně"+c.RESET)
+            except ValueError:
                 print(c.Red+"Něco jsi zadal špatně"+c.RESET)
             print()
             
 
-    except InterruptedError:
+    except KeyboardInterrupt:
         print("Odešel jsi z nastavení")
 
