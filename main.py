@@ -1,14 +1,17 @@
 import config
 import game
+import tutorial
+from color import CLEAR
 
 # hlavní game loop
 while True:
-    print("""Výtej ve hře logik
+    print(CLEAR+"""Welcome to the game logik
 
-    použij jednu z možností:
-    1: hrát
-    2: nastavení obtížnosti
-    3: odejít""")
+    Chose one of the options:
+    1: play
+    2: settings
+    3: tutorial
+    3: exit""")
 
     option = input()
 
@@ -18,5 +21,6 @@ while True:
         case "2":
             config.setConfig()
         case "3":
+            tutorial.play()
+        case "4":    
             break
-
